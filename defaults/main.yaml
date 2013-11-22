@@ -1,5 +1,5 @@
 app_home: '~/apps/{{ name }}'
-log_dir: '{{ supervisor_home }}/logs'
+log_dir: '{{ app_home }}/logs'
 extra_dirs: []
 app_dirs: '{{ [app_home, log_dir, directory] + extra_dirs }}'
 
