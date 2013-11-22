@@ -14,9 +14,9 @@ After you have installed the supervisor role, install this role the same way :)
     roles:
       - role: supervise
         name: webserver
-        command: gunicorn web:server
+        command: python -m SimpleHTTPServer
         directory: ~/public/
 
-This would install a supervisor program named 'webserver', with a simple config.
+This would install and start a supervisor program named 'webserver', with a simple config.
 
-see [defaults](https://github.com/eggsby/ansible-supervisor/blob/master/supervise/defaults/main.yaml) for supported parameters
+see [defaults](https://github.com/eggsby/ansible-supervisor/blob/master/defaults/main.yaml) for supported parameters
