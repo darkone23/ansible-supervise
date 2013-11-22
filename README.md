@@ -19,4 +19,4 @@ After you have installed the supervisor role, install this role the same way :)
 
 This would install and start a supervisor program named 'webserver', with a simple config.
 
-see [defaults](https://github.com/eggsby/ansible-supervisor/blob/master/defaults/main.yaml) for supported parameters
+see [defaults](https://github.com/eggsby/ansible-supervisor/blob/master/defaults/main.yaml) for supported parameters and the [example project](https://github.com/eggsby/ansible-supervisor-example) for help getting started.
