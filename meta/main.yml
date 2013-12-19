@@ -26,5 +26,5 @@ galaxy_info:
   - web
 
 dependencies:
-  - supervisor
+  - eggsby.supervisor
   
