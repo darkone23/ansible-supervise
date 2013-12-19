@@ -3,16 +3,14 @@ This repository is an [ansible](http://ansibleworks.com) role for installing a s
 It depends on the [supervisor](https://github.com/eggsby/ansible-supervisor) role to ensure that supervisord is installed and running.
 
 ## Installation:
-After you have installed the supervisor role, install this role the same way :)
+See [galaxy](https://galaxy.ansibleworks.com)
 
-    cd my-roles-repository
-    git clone https://github.com/eggsby/ansible-supervisor supervisor/
-    git clone https://github.com/eggsby/ansible-supervise supervise/
+    ansible-galaxy install eggsby.supervisor eggsby.supervise
 
 ## Usage:
 
     roles:
-      - role: supervise
+      - role: eggsby.supervise
         name: webserver
         command: python -m SimpleHTTPServer
         directory: ~/public/
