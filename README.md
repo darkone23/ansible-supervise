@@ -17,4 +17,8 @@ See [galaxy](https://galaxy.ansibleworks.com)
 
 This would install and start a supervisor program named 'webserver', with a simple config.
 
+    source ~/.bashrc # load aliases for interacting with our supervisor daemon
+    supervisorctl status
+    curl -I localhost:8000
+
 see [defaults](https://github.com/eggsby/ansible-supervisor/blob/master/defaults/main.yaml) for supported parameters and the [example project](https://github.com/eggsby/ansible-supervisor-example) for help getting started.
