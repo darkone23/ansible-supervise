@@ -5,10 +5,12 @@ It depends on the [supervisor](https://github.com/eggsby/ansible-supervisor) rol
 ## Installation:
 See [galaxy](https://galaxy.ansibleworks.com)
 
-    ansible-galaxy install eggsby.supervisor eggsby.supervise
+    mkdir -p roles
+    ansible-galaxy install eggsby.supervise -p roles
 
 ## Usage:
 
+    hosts: all
     roles:
       - role: eggsby.supervise
         name: webserver
