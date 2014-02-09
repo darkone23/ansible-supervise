@@ -2,6 +2,8 @@ This repository is an [ansible](http://ansibleworks.com) role for installing a s
 
 It depends on the [supervisor](https://github.com/eggsby/ansible-supervisor) role to ensure that supervisord is installed and running.
 
+The only hard dependency on the target machine is `virtualenv`. This makes it so we can install supervisord without root.
+
 ## Installation:
 See [galaxy](https://galaxy.ansibleworks.com)
 
