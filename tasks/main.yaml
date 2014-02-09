@@ -4,11 +4,14 @@
 
 - name: installing config for {{ name }}
   template: src=app.ini.j2 dest={{ supervisor_home }}/conf.d/{{ name }}.ini
-  register: supervisor_app_config
+  register: app_conf
 
 - name: starting {{ name }}
   supervisorctl: name={{ name }} state=present {{ super_args }}
+  register: app_started
 
-- name: updating configuration for {{ name }}
-  shell: '{{ supervisorctl_path }} -c {{ supervisor_config }} reread; {{ supervisorctl_path }} -c {{ supervisor_config }} update {{ name }};'
-  when: supervisor_app_config|changed
+- name: reloading configuration for {{ name }}
+  when: app_conf|changed and not app_started|changed
+  shell: >
+    {{ supervisorctl_path }} -c {{ supervisor_config }} reread;
+    {{ supervisorctl_path }} -c {{ supervisor_config }} update {{ name }}
