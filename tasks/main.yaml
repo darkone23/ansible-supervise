@@ -3,7 +3,7 @@
   with_items: app_dirs
 
 - name: installing config for {{ name }}
-  template: src=app.ini.j2 dest={{ supervisor_home }}/conf.d/{{ name }}.ini
+  template: src=app.ini.j2 dest={{ supervisor_config_dir }}/{{ name }}.ini
   register: app_conf
 
 - name: starting {{ name }}
