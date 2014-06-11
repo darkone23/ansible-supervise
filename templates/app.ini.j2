@@ -8,7 +8,7 @@ autostart={% if autostart %}true{% else %}false{% endif %}
 numprocs={{ numprocs }}
 user={{ user }}
 {% if app_env|length > 0 %}
-environment={% for name, var in app_env.iteritems() %}{{ name|upper }}="{{ var|replace('~', '%(ENV_HOME)s') }}"{% if not loop.last %},{% endif%}{% endfor %}
+environment={% for name, var in app_env.iteritems() %}{{ name|upper }}="{{ var|replace('%', '%%')|replace('~', '%(ENV_HOME)s') }}"{% if not loop.last %},{% endif%}{% endfor %}
 {% endif %}
 
 {% if umask %}umask={{ umask }}{% endif %}
