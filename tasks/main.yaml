@@ -7,7 +7,11 @@
   register: app_conf
 
 - name: starting {{ name }}
-  supervisorctl: name={{ name }} state=present {{ super_args }}
+  supervisorctl: >
+    state=present
+    name={{ name }}
+    supervisorctl_path={{ supervisorctl_path }}
+    config={{ supervisor_config }}
   register: app_started
 
 - name: reloading configuration for {{ name }}

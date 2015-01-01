@@ -9,4 +9,5 @@ app_env: {}
 user: '{{ ansible_user_id }}'
 numprocs: 1
 umask: off
+stopwaitsecs: 10
 autostart: yes
