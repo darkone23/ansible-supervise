@@ -11,3 +11,4 @@ numprocs: 1
 umask: off
 stopwaitsecs: 10
 autostart: yes
+autorestart: off
