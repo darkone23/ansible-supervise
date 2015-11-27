@@ -8,6 +8,9 @@ autostart={% if autostart %}true{% else %}false{% endif %}
 autorestart={% if autorestart %}{{autorestart}}{% else %}unexpected{% endif %}
 
 numprocs={{ numprocs }}
+{% if numprocs > 1 %}
+process_name=%(program_name)s_%(process_num)01d
+{% endif %}
 user={{ user }}
 stopwaitsecs={{ stopwaitsecs }}
 {% if app_env|length > 0 %}
