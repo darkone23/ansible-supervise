@@ -6,10 +6,19 @@
   template: src=app.ini.j2 dest={{ supervisor_config_dir }}/{{ name }}.ini
   register: app_conf
 
+# this resolves the "process group already active" issue when dealing 
+# with a single process
+- set_fact:
+    group_name: "{{ name }}:"
+  when: numprocs > 1
+- set_fact:
+    group_name: "{{ name }}"
+  when: numprocs == 1
+
 - name: starting {{ name }}
   supervisorctl: >
     state=present
-    name="{{ name }}:"
+    name="{{ group_name }}"
     supervisorctl_path={{ supervisorctl_path }}
     config={{ supervisor_config }}
   register: app_started
