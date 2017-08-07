@@ -6,6 +6,13 @@
   template: src=app.ini.j2 dest={{ supervisor_config_dir }}/{{ name }}.ini
   register: app_conf
 
+- name: ensuring log directories for {{ name }}
+  file:
+    state=directory
+    owner="{{ user }}"
+    recurse=True
+    path="{{ ansible_env.HOME }}/apps/{{name}}/logs"
+
 # this resolves the "process group already active" issue when dealing 
 # with a single process
 - set_fact:
