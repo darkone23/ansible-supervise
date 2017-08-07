@@ -1,21 +1,21 @@
-- name: ensuring directories for {{ name }}
+- name: ensuring directories for {{ app_name }}
   file: path={{ item }} state=directory owner={{ user }}
   with_items: "{{ app_dirs }}"
 
-- name: installing config for {{ name }}
-  template: src=app.ini.j2 dest={{ supervisor_config_dir }}/{{ name }}.ini
+- name: installing config for {{ app_name }}
+  template: src=app.ini.j2 dest={{ supervisor_config_dir }}/{{ app_name }}.ini
   register: app_conf
 
 # this resolves the "process group already active" issue when dealing 
 # with a single process
 - set_fact:
-    group_name: "{{ name }}:"
+    group_name: "{{ app_name }}:"
   when: numprocs > 1
 - set_fact:
-    group_name: "{{ name }}"
+    group_name: "{{ app_name }}"
   when: numprocs == 1
 
-- name: starting {{ name }}
+- name: starting {{ app_name }}
   supervisorctl: >
     state=present
     name="{{ group_name }}"
@@ -23,8 +23,8 @@
     config={{ supervisor_config }}
   register: app_started
 
-- name: reloading configuration for {{ name }}
+- name: reloading configuration for {{ app_name }}
   when: app_conf|changed and not app_started|changed
   shell: >
     {{ supervisorctl_path }} -c {{ supervisor_config }} reread;
-    {{ supervisorctl_path }} -c {{ supervisor_config }} update {{ name }}
+    {{ supervisorctl_path }} -c {{ supervisor_config }} update {{ app_name }}

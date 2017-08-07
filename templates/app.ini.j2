@@ -1,8 +1,8 @@
-[program:{{ name }}]
+[program:{{ app_name }}]
 command={{ command|replace("~", "%(ENV_HOME)s") }}
 directory={{ directory|replace("~", "%(ENV_HOME)s") }}
-stdout_logfile={{ log_dir|replace("~", "%(ENV_HOME)s") }}/{{ name }}.out.log
-stderr_logfile={{ log_dir|replace("~", "%(ENV_HOME)s") }}/{{ name }}.err.log
+stdout_logfile={{ log_dir|replace("~", "%(ENV_HOME)s") }}/{{ app_name }}.out.log
+stderr_logfile={{ log_dir|replace("~", "%(ENV_HOME)s") }}/{{ app_name }}.err.log
 autostart={% if autostart %}true{% else %}false{% endif %}
 
 autorestart={% if autorestart %}{{autorestart}}{% else %}unexpected{% endif %}
