@@ -1,5 +1,5 @@
 - name: ensuring directories for {{ name }}
-  file: path={{ item }} state=directory
+  file: path={{ item }} state=directory owner={{ user }}
   with_items: "{{ app_dirs }}"
 
 - name: installing config for {{ name }}
