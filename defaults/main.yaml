@@ -1,4 +1,4 @@
-app_home: '~/apps/{{ name }}'
+app_home: '~/apps/{{ app_name }}'
 log_dir: '{{ app_home }}/logs'
 extra_dirs: []
 app_dirs: '{{ [app_home, log_dir, directory] + extra_dirs }}'
@@ -11,3 +11,10 @@ numprocs: 1
 umask: off
 stopwaitsecs: 10
 autostart: yes
+autorestart: off
+
+supervisor_virtualenv: '~/.virtualenvs/supervisor'
+supervisor_home: '{{ supervisor_virtualenv }}/etc/supervisor'
+supervisor_config: '{{ supervisor_home }}/supervisord.conf'
+supervisor_config_dir: '{{ supervisor_home }}/conf.d'
+supervisorctl_path: '{{ supervisor_virtualenv }}/bin/supervisorctl'
