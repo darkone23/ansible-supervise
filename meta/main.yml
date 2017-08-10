@@ -25,6 +25,5 @@ galaxy_info:
   - monitoring
   - web
 
-dependencies:
-  - eggsby.supervisor
+dependencies: []
   
